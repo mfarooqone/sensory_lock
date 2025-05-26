@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sensory_app/screens/profile/profile_controller.dart';
 
 import 'welcome_screen.dart';
 
@@ -11,6 +12,13 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  ///
+  final ProfileController profileController = Get.put(
+    ProfileController(),
+    permanent: true,
+  );
+
+  ///
   @override
   void initState() {
     super.initState();

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
-import 'access_logs.dart';
+import 'access/access_logs.dart';
 import 'profile/admin_profile.dart';
 import 'realtime_monitoring.dart';
 import 'settings.dart';
@@ -133,20 +133,14 @@ class _HomeScreenState extends State<HomeScreen> {
                   icon: Icons.people,
                   label: "User Management",
                   onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (_) => UserManagement()),
-                    );
+                    Get.to(() => UserManagement());
                   },
                 ),
                 _buildGridCard(
                   icon: Icons.access_time,
                   label: "Access Logs",
                   onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (_) => AccessLogs()),
-                    );
+                    Get.to(() => AccessLogs());
                   },
                 ),
                 _buildGridCard(

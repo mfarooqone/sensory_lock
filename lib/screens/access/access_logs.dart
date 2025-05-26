@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'home_screen.dart';
-import 'settings.dart';
-import 'visitor_list.dart';
+import '../home_screen.dart';
+import '../settings.dart';
+import '../visitor_list.dart';
 
 class AccessLogs extends StatefulWidget {
   const AccessLogs({super.key});
