@@ -1,10 +1,12 @@
 import 'dart:developer';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 
 class LoginController extends GetxController {
   var isLoading = false.obs;
+
   Future<String?> signInWithEmail({
     required String email,
     required String password,
@@ -14,12 +16,13 @@ class LoginController extends GetxController {
 
       UserCredential userCredential = await FirebaseAuth.instance
           .signInWithEmailAndPassword(email: email, password: password);
-      log("userCredential === ${userCredential.user!.emailVerified}");
 
-      // Sign-in successful
-      return null; // null indicates success
+      log("userCredential === ${userCredential.user!.email}");
+
+      await saveUserEmailToFirestore();
+
+      return null; // success
     } on FirebaseAuthException catch (e) {
-      // Handle known Firebase errors
       if (e.code == 'user-not-found') {
         return 'No user found for that email.';
       } else if (e.code == 'wrong-password') {
@@ -32,10 +35,24 @@ class LoginController extends GetxController {
         return 'FirebaseAuth Error: ${e.message}';
       }
     } catch (e) {
-      // Handle unexpected errors
+      log("Unexpected error: $e");
       return 'Unexpected error: ${e.toString()}';
     } finally {
       isLoading.value = false;
     }
+  }
+
+  Future<void> saveUserEmailToFirestore() async {
+    final user = FirebaseAuth.instance.currentUser;
+    if (user == null) return;
+
+    final userDoc = FirebaseFirestore.instance
+        .collection("users")
+        .doc(user.uid);
+
+    await userDoc.set({
+      'email': user.email,
+      'updatedAt': DateTime.now().toIso8601String(),
+    }, SetOptions(merge: true));
   }
 }

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'home_screen.dart';
 import 'settings.dart';
 import 'add_user_screen.dart';
-import 'user_profile.dart';
+import 'profile/user_profile.dart';
 
 class UserManagement extends StatefulWidget {
   const UserManagement({super.key});
@@ -208,6 +208,10 @@ class _UserManagementState extends State<UserManagement> {
             style: const TextStyle(color: appColor, fontWeight: FontWeight.bold, fontSize: 16),
           ),
           onTap: () async {
+
+
+
+            
             final updatedUser = await Navigator.push(
               context,
               MaterialPageRoute(

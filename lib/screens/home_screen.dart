@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
 import 'access_logs.dart';
-import 'admin_profile.dart';
+import 'profile/admin_profile.dart';
 import 'realtime_monitoring.dart';
 import 'settings.dart';
 import 'system_alerts.dart';
@@ -51,11 +52,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 IconButton(
                   icon: Icon(Icons.person, color: primaryColor, size: 28),
+
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (_) => AdminProfile()),
-                    );
+                    Get.to(() => AdminProfile());
                   },
                 ),
               ],

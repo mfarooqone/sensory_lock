@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'home_screen.dart';
-import 'settings.dart';
+import '../home_screen.dart';
+import '../settings.dart';
 
 class UserProfileScreen extends StatefulWidget {
   final Map<String, String> user;
