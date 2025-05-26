@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
 import 'welcome_screen.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -12,11 +14,11 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(Duration(seconds: 5), () {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => WelcomeScreen()),
-      );
+
+    Future.delayed(Duration(seconds: 1), () {
+      Get.offAll(
+        () => WelcomeScreen(),
+      ); // Navigate to WelcomeScreen after 5 seconds
     });
   }
 
@@ -28,7 +30,10 @@ class _SplashScreenState extends State<SplashScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset('assets/images/splashscreenlogo.png', width: 250), // Replace with your logo
+            Image.asset(
+              'assets/images/splashscreenlogo.png',
+              width: 250,
+            ), // Replace with your logo
             SizedBox(height: 50),
           ],
         ),
