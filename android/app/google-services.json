@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "911246227352",
+    "project_id": "sensory-b8295",
+    "storage_bucket": "sensory-b8295.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:911246227352:android:fca532e788f39c7ffc9ded",
+        "android_client_info": {
+          "package_name": "com.example.sensory"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBw0_I2F8PRSVFaBkk-hbZWk43BYwbNn4A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
