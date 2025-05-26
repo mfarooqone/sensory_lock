@@ -1,1 +1,45 @@
-{"flutter":{"platforms":{"android":{"default":{"projectId":"sensory-b8295","appId":"1:911246227352:android:fca532e788f39c7ffc9ded","fileOutput":"android/app/google-services.json"}},"ios":{"default":{"projectId":"sensory-b8295","appId":"1:911246227352:ios:028a27e21382c939fc9ded","uploadDebugSymbols":false,"fileOutput":"ios/Runner/GoogleService-Info.plist"}},"dart":{"lib/firebase_options.dart":{"projectId":"sensory-b8295","configurations":{"android":"1:911246227352:android:fca532e788f39c7ffc9ded","ios":"1:911246227352:ios:028a27e21382c939fc9ded"}}}}}}
+{
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "sensory-b8295",
+          "appId": "1:911246227352:android:fca532e788f39c7ffc9ded",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "ios": {
+        "default": {
+          "projectId": "sensory-b8295",
+          "appId": "1:911246227352:ios:028a27e21382c939fc9ded",
+          "uploadDebugSymbols": false,
+          "fileOutput": "ios/Runner/GoogleService-Info.plist"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "sensory-b8295",
+          "configurations": {
+            "android": "1:911246227352:android:fca532e788f39c7ffc9ded",
+            "ios": "1:911246227352:ios:028a27e21382c939fc9ded"
+          }
+        }
+      }
+    }
+  },
+  "functions": [
+    {
+      "source": "functions",
+      "codebase": "default",
+      "ignore": [
+        "node_modules",
+        ".git",
+        "firebase-debug.log",
+        "firebase-debug.*.log"
+      ],
+      "predeploy": [
+        "npm --prefix \"$RESOURCE_DIR\" run lint"
+      ]
+    }
+  ]
+}

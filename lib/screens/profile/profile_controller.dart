@@ -1,13 +1,21 @@
-import 'dart:developer';
+// ignore_for_file: avoid_print
+
+import 'dart:math';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
+import 'package:sensory_app/screens/network_client/network_client.dart';
 import 'package:sensory_app/screens/profile/user_model.dart';
 
 import '../utils/show_snackbar.dart';
 
 class ProfileController extends GetxController {
   var isLoading = false.obs;
+
+  final networkClient = Get.put<NetworkClient>(
+    NetworkClient(),
+    permanent: true,
+  );
 
   /// Fetch user data from Firestore using UID
   Future<Map<String, dynamic>?> getUserData(String uid) async {
@@ -23,7 +31,7 @@ class ProfileController extends GetxController {
         return null;
       }
     } catch (e) {
-      log("Fetch error: $e");
+      print("Fetch error: $e");
       showErrorMessage("Failed to fetch user data.");
       return null;
     }
@@ -173,5 +181,42 @@ class ProfileController extends GetxController {
     } finally {
       isLoading.value = false;
     }
+  }
+
+  ///
+  ///
+  /* -------------------------------------------------------------------------- */
+  /*                           sendPasswordResetEmail                           */
+  /* -------------------------------------------------------------------------- */
+  ///
+  ///
+  ///
+  String generateOtp({int length = 6}) {
+    final random = Random();
+    String otp = '';
+    for (int i = 0; i < length; i++) {
+      otp += random.nextInt(10).toString(); // digits 0–9
+    }
+    return otp;
+  }
+
+  Future<void> sendOtp({required String email}) async {
+    isLoading.value = true;
+    String otp = generateOtp();
+    print("otp: $otp");
+
+    var payload = {"email": email, "otp": otp};
+
+    final result = await networkClient.post(
+      "authentication/send_custom_otp.php",
+      data: payload,
+    );
+
+    if (result.isSuccess) {
+    } else {
+      showErrorMessage("Something went wrong");
+    }
+
+    isLoading.value = false;
   }
 }
